@@ -8,18 +8,21 @@ public class Operacao extends Loja {
 	
 	private String cpf, cnpj;
 	
-	public Operacao(String cpf, String cnpj, FormaPagamento formaPagamento, Map<Produto, Integer> carrinho) {
+	public Operacao(String cpf, String cnpj, Loja loja, Pix pix, Credito credito, Debito debito, Boleto boleto, Map<Produto, Integer> carrinho) {
 		super();
 		this.cpf = cpf;
 		this.cnpj = cnpj;
-		this.formaPagamento = formaPagamento;
+		this.pix = new Pix(loja);
+  		this.credito = new Credito(loja);
+  		this.debito = new Debito(loja);
+  		this.boleto = new Boleto(loja);
 	}
 	
 	public void iniciaOperacao() {
 		System.out.println("\nSelecione os produtos: ");
     	System.out.println("\n");
     	
-    	Iterator<Produto> ProdutoAsIterator = this.formaPagamento.getLoja().getVendedor(cnpj).getCatalogo().iterator();
+    	Iterator<Produto> ProdutoAsIterator = super.getVendedor(cnpj).getCatalogo().iterator();
         while (ProdutoAsIterator.hasNext()){
         	Produto it = ProdutoAsIterator.next();
         	System.out.println(it);
@@ -30,7 +33,7 @@ public class Operacao extends Loja {
         Scanner escolha = new Scanner(System.in);
         String codigoEscolha = escolha.nextLine();
         
-        Iterator<Produto> Produtos = this.formaPagamento.getLoja().getVendedor(cnpj).getCatalogo().iterator();
+        Iterator<Produto> Produtos = super.getVendedor(cnpj).getCatalogo().iterator();
         while (Produtos.hasNext()){
         	Produto it = Produtos.next();
         	if(it.getCodigo().equals(codigoEscolha)) {
@@ -39,7 +42,7 @@ public class Operacao extends Loja {
         		}else {
         			this.carrinho.put(it, this.carrinho.get(it)+1);
         		}
-        		this.formaPagamento.getLoja().total += it.precoUnitario;
+        		super.total += it.precoUnitario;
         	}
         }
         System.out.println("\nProdutos no carrinho:");
@@ -59,13 +62,13 @@ public class Operacao extends Loja {
         	
         	String pagamento = escolha.nextLine();
         	if(pagamento.equals("Pix")) {
-        		this.formaPagamento.Pix(cpf, cnpj);        		
+        		this.pix.pagamento(cpf, cnpj);        		
         	}else if(pagamento.equals("Boleto")) {
-        		this.formaPagamento.Boleto(cpf, cnpj);
+        		this.boleto.pagamento(cpf, cnpj);
         	}else if(pagamento.equals("Debito")) {
-        		this.formaPagamento.Debito(cpf, cnpj);
+        		this.debito.pagamento(cpf, cnpj);
         	}else if(pagamento.equals("Credito")) {
-        		this.formaPagamento.Credito(cpf, cnpj);
+        		this.credito.pagamento(cpf, cnpj);
         	}else {
         		System.out.println("Método de pagamento inválido!");
         	}

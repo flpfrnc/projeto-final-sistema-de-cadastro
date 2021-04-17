@@ -12,16 +12,22 @@ public class Loja {
 	private Set<Vendedor> cadastroVendedor;
 	private Comprador dadosComprador;
 	private Vendedor dadosVendedor;	
-	protected FormaPagamento formaPagamento;
+	protected Pix pix;
+	protected Credito credito;
+	protected Debito debito;
+	protected Boleto boleto;
 	protected Map<Produto, Integer> carrinho;
 	
 	protected double total = 0;
 	
     public Loja(){      
-      this.cadastroComprador = new HashSet<>();  
-      this.cadastroVendedor = new HashSet<>();
-      this.carrinho = new HashMap<>();
-      this.formaPagamento = new FormaPagamento(this);
+    	this.cadastroComprador = new HashSet<>();  
+      	this.cadastroVendedor = new HashSet<>();
+      	this.carrinho = new HashMap<>();
+      	Pix pix = new Pix(this);
+  		Credito credito = new Credito(this);
+  		Debito debito = new Debito(this);
+  		Boleto boleto = new Boleto(this);
     }   
 
     
@@ -37,7 +43,7 @@ public class Loja {
     }
     
     public void operacao(String cpf, String cnpj) {  	
-    	Operacao operation = new Operacao(cpf, cnpj, this.formaPagamento, this.carrinho);
+    	Operacao operation = new Operacao(cpf, cnpj, this, this.pix, this.credito, this.debito, this.boleto, this.carrinho);
     	operation.iniciaOperacao();
     	this.getComprador(cpf).comprasRealizadas += 1;
 		this.getVendedor(cnpj).vendasRealizadas += 1;

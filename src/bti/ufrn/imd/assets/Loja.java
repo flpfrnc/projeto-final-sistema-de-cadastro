@@ -11,12 +11,13 @@ public class Loja {
 	private Set<Comprador> cadastroComprador;
 	private Set<Vendedor> cadastroVendedor;
 	private Comprador dadosComprador;
-	private Vendedor dadosVendedor;	
+	private Vendedor dadosVendedor;
 	protected Pix pix;
 	protected Credito credito;
 	protected Debito debito;
 	protected Boleto boleto;
 	protected Map<Produto, Integer> carrinho;
+	protected iniciaPagamento pagamentos;
 	
 	protected double total = 0;
 	
@@ -24,10 +25,11 @@ public class Loja {
     	this.cadastroComprador = new HashSet<>();  
       	this.cadastroVendedor = new HashSet<>();
       	this.carrinho = new HashMap<>();
-      	Pix pix = new Pix(this);
-  		Credito credito = new Credito(this);
-  		Debito debito = new Debito(this);
-  		Boleto boleto = new Boleto(this);
+      	this.pix = new Pix(this);
+  		this.credito = new Credito(this);
+  		this.debito = new Debito(this);
+  		this.boleto = new Boleto(this);
+  		this.pagamentos = new iniciaPagamento(this);
     }   
 
     
@@ -43,7 +45,7 @@ public class Loja {
     }
     
     public void operacao(String cpf, String cnpj) {  	
-    	Operacao operation = new Operacao(cpf, cnpj, this, this.pix, this.credito, this.debito, this.boleto, this.carrinho);
+    	Operacao operation = new Operacao(cpf, cnpj, this.pagamentos, this.pix, this.debito, this.credito, this.boleto, this.carrinho);
     	operation.iniciaOperacao();
     	this.getComprador(cpf).comprasRealizadas += 1;
 		this.getVendedor(cnpj).vendasRealizadas += 1;
@@ -92,6 +94,14 @@ public class Loja {
         		it.addProduto(produto);
         	}
         }
+    }
+    
+    public double getTotal() {
+    	return this.total;
+    }
+
+    public Pix getPix() {
+    	return this.pix;
     }
     
     public String toString(){

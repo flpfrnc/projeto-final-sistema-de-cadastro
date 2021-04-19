@@ -32,8 +32,9 @@ public class Boleto extends FormaPagamento{
 		if(this.dataAtual.isAfter(dataBoleto)) {
 			System.out.println("Boleto Vencido!");
 		}else {
-			super.getLoja().getComprador(cpf).saldo -= super.getLoja().total;
-			super.getLoja().getVendedor(cnpj).valoresReceber += (super.getLoja().total - this.valorEmissao);
+			super.getLoja().getComprador(cpf).saldo -= super.getLoja().getTotal();
+			super.getLoja().getVendedor(cnpj).valoresReceber += (super.getLoja().getTotal() - this.valorEmissao);
 		}
+		data.close();
 	}
 }

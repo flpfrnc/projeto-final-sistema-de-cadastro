@@ -10,8 +10,8 @@ public class Credito extends FormaPagamento{
 
 	@Override
 	public void pagamento(String cpf, String cnpj) {
-		super.getLoja().getComprador(cpf).valoresPagamento += super.getLoja().total;
-		super.getLoja().getVendedor(cnpj).valoresReceber += super.getLoja().total - (super.getLoja().total * this.taxaPercentual);
+		super.getLoja().getComprador(cpf).valoresPagamento += super.getLoja().getTotal();
+		super.getLoja().getVendedor(cnpj).valoresReceber += super.getLoja().getTotal() - (super.getLoja().getTotal() * this.taxaPercentual);
 	}
 
 }

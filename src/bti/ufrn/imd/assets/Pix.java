@@ -8,8 +8,8 @@ public class Pix extends FormaPagamento{
 	
 	@Override
 	public void pagamento(String cpf, String cnpj) {
-		super.getLoja().getComprador(cpf).saldo -= super.getLoja().total;
-		super.getLoja().getVendedor(cnpj).saldo += super.getLoja().total;
+		this.getLoja().getComprador(cpf).setSaldo(this.getLoja().getComprador(cpf).saldo -= this.getLoja().getTotal());
+		this.getLoja().getVendedor(cnpj).saldo += this.getLoja().getTotal();
 	}
 	
 }

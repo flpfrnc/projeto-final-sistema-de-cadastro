@@ -1,6 +1,8 @@
 package bti.ufrn.imd;
 
 import bti.ufrn.imd.assets.*;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Programa {
@@ -19,18 +21,16 @@ public class Programa {
 		registro.registraComprador(cliente2, 2470);
 		registro.registraVendedor(vendedor1);
 		registro.registraVendedor(vendedor2);
-//		registro.getPix().getLoja().getVendedor("111.222.555-45").setSaldo(registro.getPix().getLoja().getVendedor("111.222.555-45").getSaldo() + 1);
-		System.out.println(registro.getPix().getLoja().getVendedor("111.222.555-45").getSaldo());
 		
-		System.out.println("\n0 ou 5- Sair; \n1 ~ 4- Acessar menu:\n");
+		System.out.println("\n1 ~ 4- Acessar menu; \n0- Sair;\n");
 		
 		Scanner escolha = new Scanner(System.in);	
-		String opcao = escolha.nextLine();
+		String opcao = escolha.nextLine();		  
 		while(!opcao.equals("0")) {
 			String cpf;
 			String cnpj;
 			
-			System.out.println(	"1- " + MenuEnum.IMPRIMIR_DADOS_CLIENTE.getMessage() + "\n" + 
+			System.out.println(	"\n1- " + MenuEnum.IMPRIMIR_DADOS_CLIENTE.getMessage() + "\n" + 
 								"2- " + MenuEnum.IMPRIMIR_DADOS_VENDEDOR.getMessage() + "\n" +
 								"3- " + MenuEnum.REGISTRAR_PRODUTO.getMessage() + "\n" + 
 								"4- " + MenuEnum.COMPRAR_VENDER_PRODUTO.getMessage() + "\n" + 
@@ -42,12 +42,12 @@ public class Programa {
 				case "1":
 					System.out.println("\nDigitar CPF do cliente: ");
 					cpf = escolha.nextLine();
-					registro.getComprador(cpf);
+					registro.printComprador(cpf);
 					break;
 				case "2": 
 					System.out.println("\nDigitar CNPJ do Vendedor: ");
 					cnpj = escolha.nextLine();
-					registro.getVendedor(cnpj);
+					registro.printVendedor(cnpj);
 					break;
 				case "3": 
 					System.out.println("\nDigitar CNPJ do Vendedor: ");
@@ -62,6 +62,8 @@ public class Programa {
 					registro.operacao(cpf, cnpj);
 					break;
 				case "5":
+					System.exit(0);
+				default:
 					System.exit(0);
 			}
 		}

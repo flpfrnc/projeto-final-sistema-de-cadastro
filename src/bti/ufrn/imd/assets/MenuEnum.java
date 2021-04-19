@@ -2,7 +2,7 @@ package bti.ufrn.imd.assets;
 
 public enum MenuEnum {
 	IMPRIMIR_DADOS_CLIENTE(1, "Imprimir dados do Cliente;"),
-	IMPRIMIR_DADOS_VENDEDOR(2, "Digitar CNPJ do Vendedor;"),
+	IMPRIMIR_DADOS_VENDEDOR(2, "Imprimir dadoos do Vendedor;"),
 	REGISTRAR_PRODUTO(3, "Registrar Produto;"),
 	COMPRAR_VENDER_PRODUTO(4, "Comprar/Vender;"),
 	FECHAR_PROGRAMA(5, "Digite 5 ou 0 para sair...");

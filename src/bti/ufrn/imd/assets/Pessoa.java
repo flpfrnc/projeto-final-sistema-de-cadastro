@@ -18,6 +18,14 @@ public class Pessoa {
 		this.saldo = saldo;
 	}
 	
+	public void increSaldo(double saldo) {
+		this.saldo += saldo;
+	}
+	
+	public void decreSaldo(double saldo) {
+		this.saldo -= saldo;
+	}
+	
 	public String getNome() {
 		return this.nome;
 	}

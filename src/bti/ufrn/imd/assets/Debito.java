@@ -4,14 +4,15 @@ public class Debito extends FormaPagamento {
 	
 	private double taxaPercentual = 0.074;
 	
-	public Debito(Loja loja) {
+	public Debito(Loja loja, double total) {
 		super(loja);
+		this.getLoja().setTotal(total);
 	}
 
 	@Override
 	public void pagamento(String cpf, String cnpj) {
-		super.getLoja().getComprador(cpf).saldo -= super.getLoja().getTotal();
-		super.getLoja().getVendedor(cnpj).saldo += super.getLoja().getTotal() - (super.getLoja().getTotal() * this.taxaPercentual);
+		this.getLoja().getComprador(cpf).setSaldo(this.getLoja().getComprador(cnpj).saldo -= this.getLoja().getTotal());
+		this.getLoja().getVendedor(cnpj).setSaldo(this.getLoja().getVendedor(cnpj).saldo += this.getLoja().getTotal() - (this.getLoja().getTotal() * this.taxaPercentual));
 	}
 
 }

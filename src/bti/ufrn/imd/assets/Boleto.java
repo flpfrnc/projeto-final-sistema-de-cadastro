@@ -3,14 +3,15 @@ package bti.ufrn.imd.assets;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Boleto extends FormaPagamento {
+public class Boleto extends FormaPagamento{
 	
 	private LocalDate dataBoleto;
 	private LocalDate dataAtual;
 	private double valorEmissao = 3.00;
 	
-	public Boleto(Loja loja) {
+	public Boleto(Loja loja, double total) {
 		super(loja);
+		this.getLoja().setTotal(total);
 	}
 	
 	public void setDataBoleto(int dia, int mes, int ano) {
@@ -29,14 +30,12 @@ public class Boleto extends FormaPagamento {
         int ano = data.nextInt();
         
 		this.setDataBoleto(dia, mes, ano);
-		
 		if(this.dataAtual.isAfter(dataBoleto)) {
 			System.out.println("Boleto Vencido!");
-		} else {
-			super.getLoja().getComprador(cpf).saldo -= super.getLoja().getTotal();
-			super.getLoja().getVendedor(cnpj).valoresReceber += (super.getLoja().getTotal() - this.valorEmissao);
+		}else {
+			this.getLoja().getComprador(cpf).decreSaldo(this.getLoja().getTotal());
+			this.getLoja().getVendedor(cnpj).increValoresRcb(this.getLoja().getTotal() - this.valorEmissao);
 		}
-		
 		data.close();
 	}
 }

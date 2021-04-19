@@ -1,6 +1,6 @@
 package bti.ufrn.imd.assets;
 
-public class Comprador extends Pessoa {
+public class Comprador extends Pessoa{
 	private String cpfComprador;
 	protected double valoresPagamento;
 	protected int comprasRealizadas;
@@ -23,6 +23,14 @@ public class Comprador extends Pessoa {
 	
 	public double getValoresPg() {
 		return this.valoresPagamento;
+	}
+	
+	public void setValoresPg(double valoresPgto) {
+		this.valoresPagamento = valoresPgto;
+	}
+	
+	public void increValoresPg(double valoresPgto) {
+		this.valoresPagamento += valoresPgto;
 	}
 	
 	public int getCompras() {

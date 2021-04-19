@@ -3,7 +3,7 @@ package bti.ufrn.imd.assets;
 import java.util.Set;
 import java.util.HashSet;
 
-public class Vendedor extends Pessoa{
+public class Vendedor extends Pessoa {
 	private String cnpjVendedor;
 	protected double valoresReceber;
 	protected int vendasRealizadas;
@@ -48,7 +48,7 @@ public class Vendedor extends Pessoa{
 	}
 	
 	@Override
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
 		if (other == null || !other.getClass().equals(Vendedor.class)) {
 			return false;
 		}
@@ -56,7 +56,7 @@ public class Vendedor extends Pessoa{
 		return otherVendedor.getNome().equals(this.getNome());
     }
 
-    public int hashCode(){
+    public int hashCode() {
       return this.cnpjVendedor.hashCode();
     }
 }

@@ -30,7 +30,7 @@ public class Operacao extends Loja {
         	System.out.println("\n");
         } 
         
-        System.out.println("\nDigite o código do produto:");
+        System.out.println("\nDigite o cï¿½digo do produto:");
         Scanner escolha = new Scanner(System.in);
         String codigoEscolha = escolha.nextLine();
         
@@ -63,16 +63,16 @@ public class Operacao extends Loja {
         	String pagamento = escolha.nextLine();
         	if(pagamento.equals("Pix")) {
         		super.pix.pagamento(cpf, cnpj);        		
-        	}else if(pagamento.equals("Boleto")) {
+        	} else if(pagamento.equals("Boleto")) {
         		super.boleto.pagamento(cpf, cnpj);
-        	}else if(pagamento.equals("Debito")) {
+        	} else if(pagamento.equals("Debito")) {
         		super.debito.pagamento(cpf, cnpj);
-        	}else if(pagamento.equals("Credito")) {
+        	} else if(pagamento.equals("Credito")) {
         		super.credito.pagamento(cpf, cnpj);
-        	}else {
-        		System.out.println("Método de pagamento inválido!");
+        	} else {
+        		System.out.println("Mï¿½todo de pagamento invï¿½lido!");
         	}
-        }else {
+        } else {
         	this.iniciaOperacao();
         }
 	}

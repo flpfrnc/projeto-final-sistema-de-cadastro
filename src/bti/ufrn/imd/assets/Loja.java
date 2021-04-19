@@ -21,7 +21,7 @@ public class Loja {
 	
 	protected double total = 0;
 	
-    public Loja(){      
+    public Loja() {      
     	this.cadastroComprador = new HashSet<>();  
       	this.cadastroVendedor = new HashSet<>();
       	this.carrinho = new HashMap<>();
@@ -33,13 +33,13 @@ public class Loja {
     }   
 
     
-    public void registraComprador(Comprador comprador, double saldoInicial){    	   	
+    public void registraComprador(Comprador comprador, double saldoInicial) {    	   	
     	this.dadosComprador = comprador;
     	comprador.setSaldo(saldoInicial);
     	this.cadastroComprador.add(dadosComprador);
     }
     
-    public void registraVendedor(Vendedor vendedor){      	
+    public void registraVendedor(Vendedor vendedor) {      	
     	this.dadosVendedor = vendedor;    	
         this.cadastroVendedor.add(dadosVendedor);
     }
@@ -60,10 +60,11 @@ public class Loja {
         		return it;
         	}
         }
+        
         return null;
     }
     
-    public Vendedor getVendedor(String cnpj){    	
+    public Vendedor getVendedor(String cnpj) {    	
     	Iterator<Vendedor> VendedorIterator = cadastroVendedor.iterator();
         while (VendedorIterator.hasNext()){
         	Vendedor it = VendedorIterator.next();
@@ -75,14 +76,14 @@ public class Loja {
         return null;
     }
     
-    public void adicionaProduto(String cnpj){
+    public void adicionaProduto(String cnpj) {
     	Scanner escolhaProduto = new Scanner(System.in);
     	System.out.println("\nCadastro de produto.");
     	System.out.println("\nCodigo: ");
     	String codigo = escolhaProduto.nextLine();
     	System.out.println("\nNome: ");
     	String nome = escolhaProduto.nextLine();
-    	System.out.println("\nPreço: ");
+    	System.out.println("\nPreï¿½o: ");
     	double preco = escolhaProduto.nextDouble();
     	
     	Produto produto = new Produto(codigo, nome, preco);
@@ -104,16 +105,17 @@ public class Loja {
     	return this.pix;
     }
     
-    public String toString(){
+    public String toString() {
 	    String retorno = "";
 	
-	    for(Comprador comp: this.cadastroComprador){
+	    for(Comprador comp: this.cadastroComprador) {
 	    	retorno += comp + "\n\n";
 	    }
 	      
-	    for(Vendedor vend: this.cadastroVendedor){
+	    for(Vendedor vend: this.cadastroVendedor) {
 	    	retorno += vend + "\n\n";
 	    }
+	    
 	    return retorno;
     }
 }

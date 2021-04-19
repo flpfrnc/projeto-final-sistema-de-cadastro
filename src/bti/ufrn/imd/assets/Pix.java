@@ -1,6 +1,6 @@
 package bti.ufrn.imd.assets;
 
-public class Pix extends FormaPagamento{
+public class Pix extends FormaPagamento {
 	
 	public Pix(Loja loja) {
 		super(loja);

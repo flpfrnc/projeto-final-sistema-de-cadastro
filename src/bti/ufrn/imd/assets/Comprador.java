@@ -1,6 +1,6 @@
 package bti.ufrn.imd.assets;
 
-public class Comprador extends Pessoa{
+public class Comprador extends Pessoa {
 	private String cpfComprador;
 	protected double valoresPagamento;
 	protected int comprasRealizadas;

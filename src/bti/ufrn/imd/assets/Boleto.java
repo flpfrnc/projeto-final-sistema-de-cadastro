@@ -3,7 +3,7 @@ package bti.ufrn.imd.assets;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Boleto extends FormaPagamento{
+public class Boleto extends FormaPagamento {
 	
 	private LocalDate dataBoleto;
 	private LocalDate dataAtual;
@@ -29,12 +29,14 @@ public class Boleto extends FormaPagamento{
         int ano = data.nextInt();
         
 		this.setDataBoleto(dia, mes, ano);
+		
 		if(this.dataAtual.isAfter(dataBoleto)) {
 			System.out.println("Boleto Vencido!");
-		}else {
+		} else {
 			super.getLoja().getComprador(cpf).saldo -= super.getLoja().getTotal();
 			super.getLoja().getVendedor(cnpj).valoresReceber += (super.getLoja().getTotal() - this.valorEmissao);
 		}
+		
 		data.close();
 	}
 }

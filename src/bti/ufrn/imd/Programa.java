@@ -11,6 +11,7 @@ public class Programa {
 		Comprador cliente2 = new Comprador("Maria", "111.222.444-45", 0.00, 0.00, 0);
 		Vendedor vendedor1 = new Vendedor("Joseph", "111.222.555-45", 2745.00, 0.00, 0);
 		Vendedor vendedor2 = new Vendedor("Raphael", "111.222.666-45", 2745.00, 0.00, 0);
+		
 		//Loja nesse contexto contem os registros dos clientes e vendedores
 		Loja registro = new Loja();
 		
@@ -18,12 +19,10 @@ public class Programa {
 		registro.registraComprador(cliente2, 2470);
 		registro.registraVendedor(vendedor1);
 		registro.registraVendedor(vendedor2);
-		registro.getPix().getLoja().getVendedor("111.222.555-45").setSaldo(registro.getPix().getLoja().getVendedor("111.222.555-45").getSaldo() + 1);
+//		registro.getPix().getLoja().getVendedor("111.222.555-45").setSaldo(registro.getPix().getLoja().getVendedor("111.222.555-45").getSaldo() + 1);
 		System.out.println(registro.getPix().getLoja().getVendedor("111.222.555-45").getSaldo());
 		
-		//
 		System.out.println("\n0 ou 5- Sair; \n1 ~ 4- Acessar menu:\n");
-		
 		
 		Scanner escolha = new Scanner(System.in);	
 		String opcao = escolha.nextLine();
@@ -48,6 +47,7 @@ public class Programa {
 				case "2": 
 					System.out.println("\nDigitar CNPJ do Vendedor: ");
 					cnpj = escolha.nextLine();
+					registro.getVendedor(cnpj);
 					break;
 				case "3": 
 					System.out.println("\nDigitar CNPJ do Vendedor: ");

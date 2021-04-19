@@ -38,12 +38,12 @@ public class Produto {
 	public String toString() {
 		String retorno = "Produto: " + this.nomeProduto;
 		retorno += "\nCodigo: " + this.codigoProduto;
-		retorno += "\nPreço: R$ " + this.precoUnitario;		
+		retorno += "\nPreï¿½o: R$ " + this.precoUnitario;		
 		return retorno;
 	}
 	
 	@Override
-    public boolean equals(Object other){
+    public boolean equals(Object other) {
 		if (other == null || !other.getClass().equals(Produto.class)) {
 			return false;
 		}

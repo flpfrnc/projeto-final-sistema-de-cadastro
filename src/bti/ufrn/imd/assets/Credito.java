@@ -1,6 +1,6 @@
 package bti.ufrn.imd.assets;
 
-public class Credito extends FormaPagamento{
+public class Credito extends FormaPagamento {
 
 	private double taxaPercentual = 0.074;
 	

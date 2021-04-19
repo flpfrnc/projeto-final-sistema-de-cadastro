@@ -11,8 +11,8 @@ public class Debito extends FormaPagamento {
 
 	@Override
 	public void pagamento(String cpf, String cnpj) {
-		this.getLoja().getComprador(cpf).setSaldo(this.getLoja().getComprador(cnpj).saldo -= this.getLoja().getTotal());
-		this.getLoja().getVendedor(cnpj).setSaldo(this.getLoja().getVendedor(cnpj).saldo += this.getLoja().getTotal() - (this.getLoja().getTotal() * this.taxaPercentual));
+		this.getLoja().getComprador(cpf).decreSaldo(this.getLoja().getTotal());
+		this.getLoja().getVendedor(cnpj).increSaldo(this.getLoja().getTotal() - (this.getLoja().getTotal() * this.taxaPercentual));
 	}
 
 }

@@ -26,7 +26,7 @@ public class Operacao extends Loja {
         	System.out.println("\n");
         } 
         
-        System.out.println("\nDigite o código do produto:");
+        System.out.println("\nDigite o cï¿½digo do produto:");
         Scanner escolhaProduto = new Scanner(System.in);
         String codigoEscolha = escolhaProduto.nextLine();
         
@@ -47,7 +47,7 @@ public class Operacao extends Loja {
         this.otherOperacao();
 	}
 	
-	//OBS: Adicionar novo enum para esse menu de operações
+	//OBS: Adicionar novo enum para esse menu de operaï¿½ï¿½es
 	public void otherOperacao() {
 		Scanner escolhaOperacao = new Scanner(System.in);		
 		System.out.println("\nAdicionar mais produtos?");
@@ -58,34 +58,35 @@ public class Operacao extends Loja {
         	System.out.println("\nEscolha a forma de pagamento: ");
         	
         	String pagamento = escolhaOperacao.nextLine();
-        	if(pagamento.equals("Pix")) {
+        	
+        	
+        	if(pagamento.equals(OperacaoEnum.PIX.getMessage())) {
         		this.pix = new Pix(this.pagamentos.getLoja(), this.total);
         		this.pix.pagamento(cpf, cnpj); 
         		this.pagamentos.getLoja().getComprador(this.cpf).comprasRealizadas++;
         		this.pagamentos.getLoja().getVendedor(this.cnpj).vendasRealizadas++;
         		
-        	}else if(pagamento.equals("Boleto")) {
+        	} else if(pagamento.equals(OperacaoEnum.BOLETO.getMessage())) {
         		this.boleto = new Boleto(this.pagamentos.getLoja(), this.total);
         		this.boleto.pagamento(cpf, cnpj);
         		this.pagamentos.getLoja().getComprador(this.cpf).comprasRealizadas++;
         		this.pagamentos.getLoja().getVendedor(this.cnpj).vendasRealizadas++;
         		
-        	}else if(pagamento.equals("Debito")) {
+        	} else if(pagamento.equals(OperacaoEnum.DEBITO.getMessage())) {
         		this.debito = new Debito(this.pagamentos.getLoja(), this.total);
         		this.debito.pagamento(cpf, cnpj); 
         		this.pagamentos.getLoja().getComprador(this.cpf).comprasRealizadas++;
         		this.pagamentos.getLoja().getVendedor(this.cnpj).vendasRealizadas++;
         		
-        	}else if(pagamento.equals("Credito")) {
+        	} else if(pagamento.equals(OperacaoEnum.CREDITO.getMessage())) {
         		this.credito = new Credito(this.pagamentos.getLoja(), this.total);
         		this.credito.pagamento(cpf, cnpj); 
         		this.pagamentos.getLoja().getComprador(this.cpf).comprasRealizadas++;
         		this.pagamentos.getLoja().getVendedor(this.cnpj).vendasRealizadas++;
-        	}else {
-        		System.out.println("Método de pagamento inválido!");
-        		
+        	} else {
+        		System.out.println("Mï¿½todo de pagamento invï¿½lido!");
         	}
-        }else {
+        } else {
         	this.iniciaOperacao();
         }
 	}
